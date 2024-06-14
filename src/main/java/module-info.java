@@ -3,6 +3,7 @@ module com.example.studystreak {
     requires javafx.fxml;
 
     requires com.dlsc.formsfx;
+    requires java.sql;
 
     opens com.example.studystreak to javafx.fxml;
     exports com.example.studystreak;
