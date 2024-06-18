@@ -23,12 +23,12 @@
                   <Image url="@images/fire.png" />
                </image>
             </ImageView>
-            <Text fx:id="questCount" layoutX="82.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+            <Text fx:id="questCount" layoutX="60.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="65.826171875">
                <font>
                   <Font size="40.0" />
                </font>
             </Text>
-            <Text fx:id="seqCount" layoutX="274.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+            <Text fx:id="seqCount" layoutX="252.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="65.826171875">
                <font>
                   <Font size="40.0" />
                </font>
@@ -43,12 +43,12 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Text>
-            <Text fill="#ff9e45" layoutX="60.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="09/03/2024" textAlignment="CENTER" wrappingWidth="65.826171875">
+            <Text fx:id="date" fill="#ff9e45" layoutX="60.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="09/03/2024" textAlignment="CENTER" wrappingWidth="65.826171875">
                <font>
                   <Font size="9.0" />
                </font>
             </Text>
-            <Text fill="#ff9e45" layoutX="228.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 questões" textAlignment="CENTER" wrappingWidth="113.75064086914062">
+            <Text fx:id="totalQstCount" fill="#ff9e45" layoutX="228.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 questões" textAlignment="CENTER" wrappingWidth="113.75064086914062">
                <font>
                   <Font size="9.0" />
                </font>

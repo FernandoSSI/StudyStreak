@@ -1,5 +1,6 @@
 package com.example.studystreak;
 
+import com.example.studystreak.utils.DatabaseManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,6 +21,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        DatabaseManager.createTables();
         launch();
     }
 }
