@@ -5,14 +5,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.InputStream;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -85,5 +88,45 @@ public class MainController implements Initializable {
         date.setText(dateFormat.format(DatabaseManager.getCounter().getDate()));
         totalQstCount.setText(String.valueOf(DatabaseManager.getCounter().getTotalQst()) + " questões");
 
+        if (DatabaseManager.getCounter().getCurrentStreak() > 0) {
+            InputStream fireImageStream = getClass().getResourceAsStream("/com/example/studystreak/images/fire.png");
+            if (fireImageStream == null) {
+                System.err.println("Fire image not found!");
+            } else {
+                sequenceImg.setImage(new Image(fireImageStream));
+            }
+        } else {
+            InputStream rainImageStream = getClass().getResourceAsStream("/com/example/studystreak/images/rain.png");
+            if (rainImageStream == null) {
+                System.err.println("Rain image not found!");
+            } else {
+                sequenceImg.setImage(new Image(rainImageStream));
+
+            }
+        }
+
+        if(DatabaseManager.getCounter().getDayQst() > 0 && DatabaseManager.getCounter().getDayQst() <= 30){
+            InputStream okImg = getClass().getResourceAsStream("/com/example/studystreak/images/ok.png");
+            if (okImg == null){
+                System.out.println("'Ok' image not found");
+            } else {
+                emoteImg.setImage(new Image(okImg));
+            }
+        } else if (DatabaseManager.getCounter().getDayQst() > 30){
+            InputStream happyImg = getClass().getResourceAsStream("/com/example/studystreak/images/happy.png");
+            if (happyImg == null){
+                System.out.println("'Ok' image not found");
+            } else {
+                emoteImg.setImage(new Image(happyImg));
+            }
+        } else {
+            InputStream sadImg = getClass().getResourceAsStream("/com/example/studystreak/images/sad.png");
+            if (sadImg == null){
+                System.out.println("sad image not found");
+            } else {
+                emoteImg.setImage(new Image(sadImg));
+                emoteImg.setTranslateX(10);
+            }
+        }
     }
 }
