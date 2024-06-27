@@ -1,8 +1,14 @@
 package com.example.studystreak.controllers;
 
+import com.example.studystreak.Main;
 import com.example.studystreak.utils.DatabaseManager;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -10,7 +16,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -75,9 +83,25 @@ public class MainController implements Initializable {
         stage.setIconified(true);
     }
 
-    public void add(){
-        DatabaseManager.updateCounter(DatabaseManager.getCounter().getCurrentStreak() + 1, 10, 1, new Date());
-        seqCount.setText(String.valueOf(DatabaseManager.getCounter().getCurrentStreak()));
+    public void add(ActionEvent event){
+        //DatabaseManager.updateCounter(DatabaseManager.getCounter().getCurrentStreak() + 1, 10, 1, new Date());
+        try{
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("addQsts-view.fxml"));
+            Parent root = loader.load();
+
+            AddQstsController addQstsController = loader.getController();
+
+            Scene scene = new Scene(root, 523, 394);
+            Stage newStage = new Stage();  // Criando um novo Stage
+            newStage.setScene(scene);
+            newStage.setTitle("Adicionar Questões");  // Definindo o título da nova janela
+            newStage.initStyle(StageStyle.UNDECORATED);
+
+            newStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
