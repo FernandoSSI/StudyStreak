@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -18,6 +19,10 @@ public class AddQstsController implements Initializable {
     private Button closeBtn;
     @FXML
     private Button minimizeBtn;
+    @FXML
+    private VBox subjectsVbox;
+    @FXML
+    private Button addSubjectBtn;
 
 
     private double xOffset = 0;
@@ -44,6 +49,10 @@ public class AddQstsController implements Initializable {
     public void minimize(){
         Stage stage = (Stage) minimizeBtn.getScene().getWindow();
         stage.setIconified(true);
+    }
+
+    public void addSubject(){
+
     }
 
     @Override
