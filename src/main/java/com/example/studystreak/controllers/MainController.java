@@ -52,6 +52,8 @@ public class MainController implements Initializable {
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
+    private boolean open = false;
+
 
     private double xOffset = 0;
     private double yOffset = 0;
@@ -85,23 +87,30 @@ public class MainController implements Initializable {
 
     public void add(ActionEvent event){
         //DatabaseManager.updateCounter(DatabaseManager.getCounter().getCurrentStreak() + 1, 10, 1, new Date());
-        try{
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("addQsts-view.fxml"));
-            Parent root = loader.load();
 
-            AddQstsController addQstsController = loader.getController();
+        if(open == false) {
+            try{
+                FXMLLoader loader = new FXMLLoader(Main.class.getResource("addQsts-view.fxml"));
+                Parent root = loader.load();
 
-            Scene scene = new Scene(root, 523, 394);
-            Stage newStage = new Stage();  // Criando um novo Stage
-            newStage.setScene(scene);
-            newStage.setTitle("Adicionar Questões");  // Definindo o título da nova janela
-            newStage.initStyle(StageStyle.UNDECORATED);
+                AddQstsController addQstsController = loader.getController();
 
-            newStage.show();
+                Scene scene = new Scene(root, 523, 394);
+                Stage newStage = new Stage();  // Criando um novo Stage
+                newStage.setScene(scene);
+                newStage.setTitle("Adicionar Questões");  // Definindo o título da nova janela
+                newStage.initStyle(StageStyle.UNDECORATED);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+                newStage.setOnHidden(e -> open = false);
+
+                newStage.show();
+                open = true;
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
     @Override
@@ -145,7 +154,7 @@ public class MainController implements Initializable {
             }
         } else {
             InputStream sadImg = getClass().getResourceAsStream("/com/example/studystreak/images/sad.png");
-            if (sadImg == null){
+            if (sadImg == null) {
                 System.out.println("sad image not found");
             } else {
                 emoteImg.setImage(new Image(sadImg));
